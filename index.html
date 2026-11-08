@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comeunite – Private community of top tech investors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --ink-soft: #2b2b2b;
+    --white: #ffffff;
+    --accent: #ff4b12;
+    --glass: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.7);
+    --stats-bg: rgba(60, 70, 90, 0.55);
+    --radius: 22px;
+    --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: var(--font);
+    color: var(--ink);
+    background: #e9eef3;
+    -webkit-font-smoothing: antialiased;
+    padding: 8px;
+  }
+
+  /* ---------- Hero frame + background ---------- */
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 16px);
+    min-height: calc(100dvh - 16px);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* 1) Put your original photo next to this file as "background.jpg"
+       2) The gradients below are only a fallback if the image is missing */
+    background:
+      url("background.jpg") center bottom / cover no-repeat,
+      linear-gradient(to bottom,
+        #7fb2e6 0%, #bcd8f0 28%, #e9f1f6 44%,
+        #5d8fb8 56%, #6f9dc0 62%,
+        #6b8f4a 70%, #4f7a2f 100%);
+    isolation: isolate;
+  }
+
+  /* soft white glow behind the headline for legibility */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse 60% 38% at 50% 34%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%);
+    pointer-events: none;
+  }
+
+  /* ---------- Navigation ---------- */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    gap: 16px;
+  }
+
+  .logo {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: grid; place-items: center;
+    flex: none;
+  }
+  .logo svg { width: 14px; height: 14px; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    list-style: none;
+    margin-left: auto;
+    margin-right: 22px;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: .85;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  .nav-actions { display: flex; gap: 8px; align-items: center; }
+
+  .btn {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    line-height: 1;
+    display: inline-block;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn-dark { background: var(--ink); color: var(--white); }
+  .btn-dark:hover { background: #262626; }
+  .btn-light { background: rgba(255,255,255,.7); color: var(--ink); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .btn-light:hover { background: rgba(255,255,255,.9); }
+  .btn-lg { padding: 15px 22px; font-size: 14px; border-radius: 12px; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ---------- Center content ---------- */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(40px, 9vh, 90px) 20px 0;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 6px;
+    border-radius: 999px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .avatars { display: flex; }
+  .avatars span {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left: -8px;
+    display: grid; place-items: center;
+    font-size: 10px; font-weight: 600; color: #fff;
+  }
+  .avatars span:first-child { margin-left: 0; }
+  .avatars span:nth-child(1) { background: #3f7a8c; }
+  .avatars span:nth-child(2) { background: #5b6b86; }
+  .avatars span:nth-child(3) { background: #8a5a3c; }
+  .avatars span:nth-child(4) { background: #c4352c; }
+  .avatars span:nth-child(5) { background: #2f3a4a; }
+
+  h1 {
+    margin-top: clamp(20px, 4vh, 34px);
+    font-size: clamp(2.2rem, 7vw, 4.4rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .subtitle {
+    margin-top: 22px;
+    font-size: clamp(.9rem, 1.6vw, 1rem);
+    color: var(--ink-soft);
+  }
+
+  .cta { margin-top: clamp(24px, 4vh, 36px); }
+
+  /* ---------- Stats bar ---------- */
+  .stats-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 22px;
+    margin-top: auto;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: clamp(20px, 4vw, 44px);
+    padding: 16px clamp(22px, 3vw, 40px);
+    border-radius: 30px;
+    background: var(--stats-bg);
+    border: 1px solid rgba(255,255,255,.25);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    color: #fff;
+    text-align: center;
+  }
+  .stat strong {
+    display: block;
+    font-size: clamp(1.25rem, 3vw, 1.9rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .stat span {
+    display: block;
+    margin-top: 4px;
+    font-size: 11.5px;
+    opacity: .9;
+    white-space: nowrap;
+  }
+
+  /* ---------- Floating action button ---------- */
+  .fab {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    border: 0;
+    background: rgba(255,255,255,.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: grid; place-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,.15);
+    transition: transform .15s ease;
+  }
+  .fab:hover { transform: translateY(-2px); }
+  .fab svg { width: 24px; height: 24px; }
+
+  /* ---------- Menu toggle (mobile only) ---------- */
+  .menu-btn {
+    display: none;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    border: 0;
+    background: rgba(255,255,255,.7);
+    cursor: pointer;
+    place-items: center;
+  }
+  .menu-btn svg { width: 20px; height: 20px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .nav-links { gap: 16px; margin-right: 10px; }
+  }
+
+  @media (max-width: 720px) {
+    body { padding: 0; }
+    .hero { border-radius: 0; min-height: 100vh; min-height: 100dvh; }
+
+    .menu-btn { display: grid; }
+    .nav { flex-wrap: wrap; }
+    .nav-links {
+      order: 5;
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      margin: 0;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 14px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .3s ease;
+    }
+    .nav-links.open { max-height: 260px; }
+    .nav-links a { display: block; padding: 14px 18px; font-size: 14px; }
+    .nav-actions { margin-left: auto; }
+    .nav-actions .btn-dark { display: none; }
+
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px 28px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 380px;
+    }
+    .stats-wrap { padding-bottom: 82px; }
+    .badge { font-size: 11.5px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <header class="nav">
+    <a class="logo" href="#" aria-label="Comeunite home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 20V8a4 4 0 0 1 4-4h8"/><path d="M6 12h10"/>
+      </svg>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">App</a></li>
+      <li><a href="#">Family office</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="signup.html#signin" class="btn btn-light">Sign in</a>
+      <a href="become-a-member.html" class="btn btn-dark">Become a member</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="badge">
+      <div class="avatars" aria-hidden="true">
+        <span>A</span><span>M</span><span>J</span><span>S</span><span>R</span>
+      </div>
+      400+ tech investors join the community. Join us!
+    </div>
+
+    <h1>Comeunite</h1>
+    <p class="subtitle">Private community of top tech investors.</p>
+    <div class="cta"><a href="become-a-member.html" class="btn btn-dark btn-lg">Become a member</a></div>
+  </main>
+
+  <div class="stats-wrap">
+    <div class="stats" role="list">
+      <div class="stat" role="listitem"><strong>410+</strong><span>Tech professionals</span></div>
+      <div class="stat" role="listitem"><strong>€11M</strong><span>Invested</span></div>
+      <div class="stat" role="listitem"><strong>14</strong><span>Deals made</span></div>
+      <div class="stat" role="listitem"><strong>2.5</strong><span>Years on the market</span></div>
+    </div>
+  </div>
+
+  <button class="fab" aria-label="Ask a question">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#0e0e0e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+      <path d="M11 8v6M8 11h6" stroke-width="1.6"/>
+    </svg>
+  </button>
+</section>
+
+<script>
+  const btn = document.getElementById('menuBtn');
+  const links = document.getElementById('navLinks');
+  btn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+</script>
+</body>
+</html>

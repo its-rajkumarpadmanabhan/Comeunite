@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Become a member – Comeunite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<div class="page">
+  <header class="nav">
+    <a class="logo" href="index.html" aria-label="Comeunite home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20V8a4 4 0 0 1 4-4h8"/><path d="M6 12h10"/></svg>
+    </a>
+    <div class="nav-actions">
+      <a href="index.html" class="btn btn-light">Back to home</a>
+      <a href="signup.html#signin" class="btn btn-dark">Sign in</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="card wide" aria-labelledby="title">
+      <div id="formView">
+        <h1 id="title">Apply for membership</h1>
+        <p class="lead">Tell us a little about yourself. We review every application and reply within 3 working days.</p>
+
+        <form id="memberForm" novalidate>
+          <div class="row">
+            <div class="field" id="f-first">
+              <label for="first">First name</label>
+              <input id="first" type="text" autocomplete="given-name" placeholder="Anna">
+              <span class="error-msg">Enter your first name.</span>
+            </div>
+            <div class="field" id="f-last">
+              <label for="last">Last name</label>
+              <input id="last" type="text" autocomplete="family-name" placeholder="Schmidt">
+              <span class="error-msg">Enter your last name.</span>
+            </div>
+          </div>
+
+          <div class="field" id="f-email">
+            <label for="email">Work email</label>
+            <input id="email" type="email" autocomplete="email" placeholder="you@company.com">
+            <span class="error-msg">Enter a valid email address.</span>
+          </div>
+
+          <div class="row">
+            <div class="field" id="f-company">
+              <label for="company">Company</label>
+              <input id="company" type="text" autocomplete="organization" placeholder="Where you work">
+              <span class="error-msg">Enter your company.</span>
+            </div>
+            <div class="field" id="f-role">
+              <label for="role">Role</label>
+              <input id="role" type="text" autocomplete="organization-title" placeholder="e.g. Engineering Lead">
+              <span class="error-msg">Enter your role.</span>
+            </div>
+          </div>
+
+          <div class="field" id="f-linkedin">
+            <label for="linkedin">LinkedIn profile</label>
+            <input id="linkedin" type="url" placeholder="https://linkedin.com/in/yourname">
+            <span class="error-msg">Enter a valid link starting with https://</span>
+          </div>
+
+          <div class="field" id="f-exp">
+            <label for="exp">Investing experience</label>
+            <select id="exp">
+              <option value="">Select one</option>
+              <option>Just getting started</option>
+              <option>1–3 years</option>
+              <option>3–7 years</option>
+              <option>More than 7 years</option>
+            </select>
+            <span class="error-msg">Choose your experience level.</span>
+          </div>
+
+          <div class="field" id="f-ticket" role="group" aria-labelledby="ticketLegend">
+            <span class="legend" id="ticketLegend">Typical amount you invest per deal</span>
+            <div class="chips">
+              <input type="radio" name="ticket" id="t1" value="under-5k"><label for="t1">Under €5K</label>
+              <input type="radio" name="ticket" id="t2" value="5-25k"><label for="t2">€5K–25K</label>
+              <input type="radio" name="ticket" id="t3" value="25-100k"><label for="t3">€25K–100K</label>
+              <input type="radio" name="ticket" id="t4" value="100k+"><label for="t4">€100K+</label>
+            </div>
+            <span class="error-msg">Pick an amount.</span>
+          </div>
+
+          <div class="field" id="f-why">
+            <label for="why">Why do you want to join?</label>
+            <textarea id="why" maxlength="600" placeholder="What are you hoping to learn, share or invest in?"></textarea>
+            <span class="error-msg">Write at least a short sentence (20+ characters).</span>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="consent">
+            <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>, and to be contacted about my application.</span>
+          </label>
+          <span class="error-msg" id="consentErr" style="display:none;color:var(--error)">Please accept to continue.</span>
+
+          <button type="submit" class="btn btn-dark btn-block" id="submitBtn">Submit application</button>
+        </form>
+
+        <p class="foot">Already a member? <a href="signup.html#signin">Sign in</a></p>
+      </div>
+
+      <div class="success" id="successView" role="status">
+        <div class="tick">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+        </div>
+        <h2>Application received</h2>
+        <p>Thanks, <span id="nameOut"></span>. We'll email you at <strong id="emailOut"></strong> within 3 working days.</p>
+        <a href="index.html" class="btn btn-dark btn-block">Back to home</a>
+      </div>
+    </section>
+
+    <aside class="aside" aria-labelledby="perks-title">
+      <h2 id="perks-title">What members get</h2>
+      <ul class="perks">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <div><strong>Curated deal flow</strong><span>Vetted startups and funds, shared first with the community.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg>
+          <div><strong>A network of peers</strong><span>400+ tech professionals who invest like you do.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h4"/></svg>
+          <div><strong>Resources and templates</strong><span>Guides, term-sheet checklists and portfolio tools.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+          <div><strong>Family office support</strong><span>Planning for long-term wealth, with people who get tech income.</span></div>
+        </li>
+      </ul>
+      <div class="mini-stats">
+        <div><strong>€11M</strong><span>Invested</span></div>
+        <div><strong>14</strong><span>Deals made</span></div>
+        <div><strong>2.5</strong><span>Years</span></div>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function flag(id, bad) { $(id).classList.toggle('invalid', bad); return !bad; }
+
+  $('memberForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    ok = flag('f-first', $('first').value.trim().length < 1) && ok;
+    ok = flag('f-last', $('last').value.trim().length < 1) && ok;
+    ok = flag('f-email', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('email').value.trim())) && ok;
+    ok = flag('f-company', $('company').value.trim().length < 1) && ok;
+    ok = flag('f-role', $('role').value.trim().length < 1) && ok;
+    ok = flag('f-linkedin', !/^https?:\/\/.+\..+/.test($('linkedin').value.trim())) && ok;
+    ok = flag('f-exp', !$('exp').value) && ok;
+    ok = flag('f-ticket', !document.querySelector('input[name="ticket"]:checked')) && ok;
+    ok = flag('f-why', $('why').value.trim().length < 20) && ok;
+    var consentBad = !$('consent').checked;
+    $('consentErr').style.display = consentBad ? 'block' : 'none';
+    ok = !consentBad && ok;
+
+    if (!ok) {
+      var firstBad = document.querySelector('.field.invalid');
+      if (firstBad) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    var btn = $('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    // TODO: replace with a real request, e.g. fetch('/api/apply', { method: 'POST', body: JSON.stringify({...}) })
+    setTimeout(function () {
+      $('nameOut').textContent = $('first').value.trim();
+      $('emailOut').textContent = $('email').value.trim();
+      $('formView').style.display = 'none';
+      $('successView').classList.add('show');
+    }, 800);
+  });
+})();
+</script>
+</body>
+</html>
